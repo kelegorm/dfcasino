@@ -1,0 +1,11 @@
+extends layout
+
+block append styles
+    link(href="/stylesheets/note.css", rel="stylesheet")
+
+block content
+    div.container
+        .page-header
+            a(href="/")
+                h3.text-muted Notter
+        p.lead= text

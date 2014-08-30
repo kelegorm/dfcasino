@@ -1,0 +1,61 @@
+extends layout
+
+block append styles
+    link(href="stylesheets/app.css", rel="stylesheet")
+
+block content
+    .navbar.navbar-inverse.navbar-fixed-top
+        .container
+            .navbar-header
+                button.navbar-toggle(type="button", data-toggle="collapse", data-target=".navbar-collapse")
+                    span.icon-bar
+                    span.icon-bar
+                    span.icon-bar
+                a.navbar-brand(href="/app") Notter
+            .navbar-collapse.collapse
+                .navbar-right.navbar-btn
+                    .btn-toolbar
+                        .btn-group
+                            a.btn.btn-primary(data-toggle="modal", href="#addNoteModal")
+                                span.glyphicon.glyphicon-plus
+                                |  Add note
+                        .btn-group
+                            button#deleteAllButton.btn.btn-default
+                                span.glyphicon.glyphicon-fire
+                                |  Clear all
+                        .btn-group
+                            button.btn.btn-default.dropdown-toggle(href="#", data-toggle="dropdown", type="button")
+                                span.glyphicon.glyphicon-user
+                                |  #{email}&nbsp;
+                                span.caret
+
+                            ul.dropdown-menu
+                                li
+                                    a(href="/signout")
+                                        span.glyphicon.glyphicon-log-out
+                                        |  Sign out
+
+    div
+        #emptyDisplay.jumbotron.text-muted.text-center.hide There are no one note here.&nbsp;
+            a(href="#" data-toggle="modal", href="#addNoteModal") Create first!
+        #notesContainer.col-md-12
+block append lastContent
+    div#addNoteModal.modal.fade(tabindex="-1", role="dialog", aria-labelledby="myModalLabel", aria-hidden="true")
+        div.modal-dialog
+            div.modal-content
+                div.modal-header
+                    button.close(type="button", data-dismiss="modal", aria-hidden="true") &times;
+                    h4.modal-title Add note
+                div.modal-body
+                    form#nodeForm(role="form")
+                        .form-group
+                            textarea#noteTextArea.form-control(placeholder="type note here")
+                div.modal-footer
+                    span.text-muted Press Ctrl+Enter for submit&nbsp;
+                    button.btn.btn-default(type="button", data-dismiss="modal") Cancel
+                    button#createNoteButton.btn.btn-primary(type="button", data-dismiss="modal") Create
+
+block append footerscripts
+    script(src="http://tinymce.cachefly.net/4.0/tinymce.min.js")
+    script(src="/javascripts/DateUtils.js")
+    script(src="/javascripts/app.js")

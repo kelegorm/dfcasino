@@ -1,0 +1,15 @@
+body {
+    padding-top: 70px;
+}
+
+.note {
+    padding: 20px 0;
+    border-bottom: dashed #eeeeee 1px;
+}
+
+.note .hidable {
+    opacity: 0;
+}
+.note:hover .hidable {
+    opacity: 1;
+}

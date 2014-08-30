@@ -1,0 +1,26 @@
+extends layout
+
+block append styles
+    link(href="/stylesheets/loginForm.css", rel="stylesheet")
+    link(href="/stylesheets/signin.css", rel="stylesheet")
+
+block content
+    .navbar
+        .container
+            .navbar-btn
+                a.btn.btn-info(href="/")
+                    span.glyphicon.glyphicon-chevron-left
+                    |  Back to home
+    div.container
+        #errorDisplay.alert.alert-danger.hide
+        form#signinForm.form-signIn
+            h2.form-signin-heading Please sign in
+            input.form-control.combined(name="email", type="email", placeholder="Email address", autofocus, value="")
+            input.form-control.combined(name="password", type="password", placeholder="Password", value="")
+            label.checkbox
+                //input(type="checkbox", value="remember-me")
+                //| Remember me
+            button#btnSubmit.btn.btn-lg.btn-primary.btn-block(type="submit") Sign in
+
+block append footerscripts
+    script(src="/javascripts/signin.js")

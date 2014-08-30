@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.png">
+
+    <title>Notter</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="stylesheets/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="stylesheets/jumbotron-narrow.css" rel="stylesheet">
+
+    <link href="stylesheets/index.css" rel="stylesheet">
+    <link href="stylesheets/loginForm.css" rel="stylesheet">
+
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="javascripts/html5shiv.js"></script>
+    <script src="javascripts/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="container">
+    <div class="header">
+        <!--<ul class="nav nav-pills pull-right">-->
+            <!--<li class="active"><a href="#">Home</a></li>-->
+            <!--<li><a href="#">About</a></li>-->
+        <!--</ul>-->
+
+        <a href="/signin" class="btn btn-primary pull-right">
+            <span class="glyphicon glyphicon-log-in"></span> Sign in</a>
+        <h3 class="text-muted">Notes</h3>
+    </div>
+
+    <div class="jumbotron">
+        <h1>Notes</h1>
+        <p class="lead">Keep your notes in one place. Share your notes with different devices.</p>
+        <a id="openSignUpFormButton" class="btn btn-success" href="#">Sign up today!</a>
+        <form id="signUpForm" class="form-signIn hide">
+            <div id="errorDisplay" class="alert alert-danger hide"></div>
+            <input id="emailInput" name="email" type="email" class="form-control" placeholder="Your email" autofocus required>
+            <input id="passwordInput" name="password" type="password" class="form-control" placeholder="Type your password" required>
+            <input id="protoInput" name="proto" type="text" class="form-control" placeholder="Type your proto">
+            <button id="signUpButton" form="signUpForm" class="btn btn-success">Sign up!</button>
+        </form>
+    </div>
+
+    <div class="row marketing">
+        <div class="col-lg-6">
+            <h4>Subheading</h4>
+            <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+
+            <h4>Subheading</h4>
+            <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+
+            <h4>Subheading</h4>
+            <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+        </div>
+
+        <div class="col-lg-6">
+            <h4>Subheading</h4>
+            <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+
+            <h4>Subheading</h4>
+            <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+
+            <h4>Subheading</h4>
+            <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; Special for <a href="http://letslearnnodejs.kelegorm.ru/">Let's learn Node.js!</a></p>
+    </div>
+
+</div> <!-- /container -->
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<!--<script src="javascripts/jquery.js"></script>-->
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="javascripts/bootstrap.js"></script>
+<script src="javascripts/index.js"></script>
+
+</body>
+</html>
