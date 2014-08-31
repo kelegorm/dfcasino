@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 var AccountSchema = new mongoose.Schema({
     email:     { type: String, unique: true },
     password:  { type: String },
+    balance:      { type: String},
     name:      { type: String }
 });
 var Account = mongoose.model('Account', AccountSchema);
@@ -25,11 +26,12 @@ module.exports.register = function(email, password, callback) {
     console.log('Registering ' + email);
     var user = new Account({
         email: email,
-        password: shaSum.digest('hex')
+        password: shaSum.digest('hex'),
+        balance: 100
     });
     user.save(callback);
     console.log('Save command was sent');
-}
+};
 
 
 module.exports.changePassword = function(accountId, newpassword) {
@@ -72,7 +74,22 @@ module.exports.findById = function(accountId, callback) {
     Account.findOne({_id:accountId}, function(err,doc) {
         callback(doc);
     });
-}
+};
+
+
+module.exports.changeMoney = function(email, multiplier, callback) {
+    Account.findOne({email:email}, function(error, user) {
+        if (!error) {
+            user.balance *= multiplier;
+
+            Account.update({email: user.email}, { balance: user.balance}, function (error, doc) {
+                callback(error, user);
+            });
+        } else {
+            callback(error, null);
+        }
+    });
+};
 
 var registerCallback = function(err) {
     if (err) {

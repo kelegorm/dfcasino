@@ -1,7 +1,8 @@
+var Account = require('../model/Account');
+
 module.exports = function (app) {
     app.post('/game/dropbones', function(req, res) {
         var choice = parseInt(req.param('choice'));
-        console.log('user choice is ' + choice);
 
         if (isNaN(choice) || !(choice >= 1 && choice <= 3)) {
             res.send(400);
@@ -11,12 +12,17 @@ module.exports = function (app) {
         var dropResult = dropBones();
         var gameResult = choice == dropResult;
 
-        console.log('drop result is ' + dropResult);
-        console.log('game result is ' + gameResult);
+        var ert = (gameResult) ? 1.05 : .95;
 
-
-        res.send(200, {result:gameResult});
-
+        var email = req.session.email;
+        Account.changeMoney(email, ert, function (error, doc) {
+            if (!error) {
+                res.send(200, {result:gameResult, balance:doc.balance});
+            } else {
+                console.log(error);
+                res.send(400);
+            }
+        });
     });
 };
 

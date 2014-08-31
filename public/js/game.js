@@ -1,14 +1,11 @@
-var userMoney = 100;
 
-function victory(isSuccess) {
+function updateDisplay(isSuccess, balance) {
     if (isSuccess) {
-        userMoney = userMoney * 1.05;
-        document.getElementById('victor').innerHTML="Победа. Счет увеличился на 5%.<br /> Теперь у вас " + userMoney + " рублей";
+        document.getElementById('victor').innerHTML="Победа. Счет увеличился на 5%.<br /> Теперь у вас " + balance + " рублей";
         document.getElementById('victor2').innerHTML="Еще разок?";
 
     } else {
-        userMoney = userMoney * 0.95;
-        document.getElementById('victor').innerHTML="Вы проиграли. Денег стало на 5% меньше.<br /> Теперь у вас " + userMoney + " рублей";
+        document.getElementById('victor').innerHTML="Вы проиграли. Денег стало на 5% меньше.<br /> Теперь у вас " + balance + " рублей";
         document.getElementById('victor2').innerHTML="Еще разок?";
     }
 }
@@ -19,7 +16,7 @@ $('.btnSelect').click(function (event) {
     $.post('/game/dropbones', {choice: $(this).data('choice')})
         .done(function(response) {
             console.log('result is ' + response.result);
-            victory(response.result);
+            updateDisplay(response.result, response.balance);
         })
         .error(function (request) {
             console.log('looser!!');
