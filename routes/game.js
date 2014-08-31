@@ -4,7 +4,7 @@ module.exports = function (app) {
     app.post('/game/dropbones', function(req, res) {
         var choice = parseInt(req.param('choice'));
 
-        if (isNaN(choice) || !(choice >= 1 && choice <= 3)) {
+        if (isNaN(choice) || !(choice >= 0 && choice <= 1)) {
             res.send(400);
             return;
         }
@@ -26,8 +26,6 @@ module.exports = function (app) {
     });
 };
 
-var min = 0, max = 3;
-
 function dropBones() {
-    return Math.ceil(Math.random()*(max-min));
+    return Math.round(Math.random());
 }
